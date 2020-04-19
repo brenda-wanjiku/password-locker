@@ -20,6 +20,9 @@ class TestUser( unittest.TestCase):
         self.new_user.save_user()
         self.assertEqual(len(User.user_list),1)
 
+    def test_delete_user(self):
+        self.new_user.delete_user()
+        self.assertEqual(len(User.user_list), 0)
      
 
 
