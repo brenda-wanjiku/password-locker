@@ -21,8 +21,15 @@ class TestUser( unittest.TestCase):
         self.assertEqual(len(User.user_list),1)
 
     def test_delete_user(self):
+        self.new_user.save_user()
+        self.assertEqual(len(User.user_list),1)
         self.new_user.delete_user()
         self.assertEqual(len(User.user_list), 0)
+
+    def test_user_password(self):
+        self.new_user.save_user()
+        password_entered = User.password_correct("@bw21#!&")
+        self.assertTrue(password_entered)
      
 
 

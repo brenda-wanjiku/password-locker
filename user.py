@@ -13,4 +13,12 @@ class User :
     def delete_user(self):
         User.user_list.remove(self)
 
+    @classmethod
+    def password_correct(cls, password):
+        for user in cls.user_list:
+            return user.password == password
+              
+
+
+
     
