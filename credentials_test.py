@@ -17,7 +17,7 @@ class TestCredentials (unittest.TestCase):
     def test_new_account(self):
         self.new_account.save_account()
 
-    def test_multiple_account(self):
+    def test_multiple_accounts(self):
         self.new_account.save_account()
         test_account = Credentials ("Facebook", "test", "test@gmail.com")
         test_account.save_account()
@@ -28,6 +28,16 @@ class TestCredentials (unittest.TestCase):
         self.new_account.save_account()
         self.new_account.delete_account()
         self.assertEqual(len(Credentials.account_info), 0)
+
+    def test_display_accounts(self):
+      self.assertEqual(Credentials.display_accounts(), Credentials.account_info)
+
+    def test_account_exists(self):
+      self.new_account.save_account() 
+      test_account = Credentials ("Facebook", "test", "test@gmail.com")
+      test_account.save_account()
+      account_exists = Credentials.account_exist("Twitter")
+      self.assertTrue(account_exists)
 
 
 
