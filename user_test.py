@@ -31,6 +31,10 @@ class TestUser( unittest.TestCase):
         password_entered = User.password_correct("@bw21#!&")
         self.assertTrue(password_entered)
      
+    def test_user_exist(self):
+        self.new_user.save_user()
+        name_entered = User.name_exists("Brenda", "Wanjiku")
+        self.assertIs(name_entered,True)
 
 
 
