@@ -8,5 +8,6 @@ class Credentials:
     def save_account(self):
         Credentials.account_info.append(self)
 
+
     def delete_account(self):
         Credentials.account_info.remove(self)
