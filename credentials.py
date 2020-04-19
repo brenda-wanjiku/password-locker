@@ -23,4 +23,15 @@ class Credentials:
                 return True
             return False
 
+    @classmethod
+    def find_by_account(cls, account):
+        for account_details in cls.account_info:
+            if account_details.account == account:
+                return account
+
+    @classmethod
+    def delete_by_account(cls, account):
+         for account_details in cls.account_info:
+             cls.account_info.pop()
+        
     

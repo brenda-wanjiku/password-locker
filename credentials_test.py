@@ -39,7 +39,19 @@ class TestCredentials (unittest.TestCase):
       account_exists = Credentials.account_exist("Twitter")
       self.assertTrue(account_exists)
 
+    def test_find_by_account(self):
+      self.new_account.save_account() 
+      find_account = Credentials.find_by_account("Twitter")
+      self.assertTrue(find_account, self.new_account.account)
 
+
+    def test_delete_account(self):
+      self.new_account.save_account() 
+      test_account = Credentials ("Facebook", "test", "test@gmail.com")
+      test_account.save_account()
+      account_exists = Credentials.account_exist("Twitter")
+      Credentials.delete_by_account("Twitter")
+      self.assertEqual(len(Credentials.account_info), 1)
 
 if __name__ == '__main__':
     unittest.main()
