@@ -69,11 +69,17 @@ class TestCredentials (unittest.TestCase):
       test_account.save_account()
       account_exists = Credentials.account_exist("Twitter")
       self.assertTrue(account_exists)
+        '''
+        Test to see if an account exists
+        '''
 
     def test_find_by_account(self):
       self.new_account.save_account() 
       find_account = Credentials.find_by_account("Twitter")
       self.assertTrue(find_account, self.new_account.account)
+        '''
+        Test to find credentials using account name
+        '''
 
 
     def test_delete_account(self):

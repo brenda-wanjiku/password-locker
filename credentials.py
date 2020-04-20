@@ -23,6 +23,9 @@ class Credentials:
 
     def delete_account(self):
         Credentials.account_info.remove(self)
+        '''
+        Method to delete accounts
+        '''
 
     @classmethod
     def display_accounts(cls):
@@ -58,7 +61,7 @@ class Credentials:
          for account_details in cls.account_info:
              cls.account_info.pop()
 
-         '''
+        '''
         Method to display an account's credentials on entering account name
         Args:
             account_name: Name of the account which you seek display its credentials

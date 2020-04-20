@@ -8,14 +8,23 @@ from credentials import Credentials
 def create_user(first_name, last_name, email, password):
     new_user = User(first_name, last_name, email, password)
     return new_user
+    '''
+    Function to create a new user
+    '''
 
 
 def save_user(user):
     user.save_user()
+    '''
+    Function to save a new user
+    '''
 
 
 def name_exists(first_name, last_name):
     return Credentials.name_exists(first_name, last_name)
+    '''
+    Function to check whether a user name exists
+    '''
 
 ###########   Credentials functions  #################
 
@@ -23,33 +32,51 @@ def name_exists(first_name, last_name):
 def create_account(account, username, password):
     new_account = Credentials(account, username, password)
     return new_account
+    '''
+    Function to create a new account
+    '''
 
 
 def save_account(account_info):
     account_info.save_account()
-
+    '''
+    Function to create an account
+    '''
+    
 
 def delete_account(account):
     return Credentials.delete_by_account(account)
+    '''
+    Function to delete an account
+    '''
 
 
 def exisiting_account(account):
     return Credentials.account_exist(account)
+    '''
+    Function to search for an existing account
+    '''
 
 
 def display_accounts():
     return Credentials.display_accounts()
+    '''
+    Function to display account
+    '''
 
 
 
 def find_by_account(account):
     return Credentials.find_by_account(account)
+    '''
+    Function to find account by account name 
+    '''
 
 
 def password_generator(password_length):
     return Credentials.password_generator(password_length)
     '''
-        Function that finds a contact by number and returns the contact
+        Function that auto generates password
     '''
 
 
