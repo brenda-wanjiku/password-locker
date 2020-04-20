@@ -30,11 +30,15 @@ def save_account(account_info):
 
 
 def delete_account(account):
-    Credentials.delete_by_account(account)
+   return Credentials.delete_by_account(account)
+
+def exisiting_account(account):
+    return Credentials.account_exist(account)
 
 
 def display_accounts():
-    return Credentials.account_exist(account)
+    return Credentials.display_accounts()
+
 
 
 def find_by_account(account):
@@ -121,14 +125,27 @@ def main():
                         print(f"{f_name}. {account_name} has been successfully saved")
                     
                     elif short_code == "da":
-                        if display_accounts()
+                        if display_accounts():
                             print ("Here is a list of the existing accounts")
                             print('\n')
 
                             for account in display_accounts():
-                                print (f"{account_info.account} {account_info.username} {account_info.password}")
+                                print(f" {account.account}  {account.username} {account.password} ")
+                        else: 
+                            print(" You currently have nothing saved")
+                    
+
+            
 
 
+                    elif short_code == "del":
+                        print ("Enter the name of the account you wish to delete")
+                        account_name = input()
+                        if account_exist(account_name):
+                            delete_account(account_name)
+                            print (f"{account_name} has succesfully been deleted.")
+                        else:
+                            print("The account you entered does not exist")
 
 
 
