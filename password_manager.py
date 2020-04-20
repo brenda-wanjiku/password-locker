@@ -41,37 +41,47 @@ def display_accounts():
     return Credentials.display_accounts()
 
 
+
 def find_by_account(account):
     return Credentials.find_by_account(account)
 
 
 ############### Main program #####################
 def main():
-
+    print('\n')
     print("WELCOME TO YOUR PASSWORD MANAGER")
+    print('\n')
     while True:
-        print("Use these short codes: cu - create a new user, ex - exit password manager")
+        print("""Use these short codes:
+            cn - create a new user 
+            lg - log in 
+            ex - exit password manager""")
         short_code = input().lower()
 
 
-        if short_code == "cu":
+        if short_code == "cn":
             print("New Contact")
-            print("-"*10)
+            print("-"*30)
+            print('\n')
 
-            print("First name.....")
+
+            print("First name... ")
             f_name = input()
+            print('\n')
 
-            print("Last name .....")
+            print("Last name... ")
             l_name = input()
+            print('\n')
 
-            print("Phone number .....")
+            print("Phone number... ")
             e_address = input()
+            print('\n')
 
             while True:
-                print("Password...")
+                print("Password... ")
                 password1 = input()
-
-                print("Confirm password ...")
+                print('\n')
+                print("Confirm password...")
                 password2 = input()
 
                 if password1 == password2:
@@ -80,99 +90,146 @@ def main():
                     print('\n')
                     print(
                         f"{f_name}  {l_name} you have successfully signed up for an account")
+                    print('\n')  
+                    print("Kindly LOG IN to explore the app :)")
                     print('\n')
+                    break
+                          
                 else:
-                    print("Incorrect password. Please try again")
+                    print('\n')
+                    print("INCORRECT PASSWORD. Please try again")
+
+        if short_code == "lg":
+                    print('\n')
+                    print("First Name")
+                    log_f_name = input()   
+                    print('\n')
+                    print("Last Name")
+                    log_l_name = input()
+                    print('\n')
+                    print("Password") 
+                    logpassword = input()
+
+                    if logpassword == password and log_f_name == f_name:
+                        print(f"Successful log in {log_f_name}. You may proceed exploring the app.")
+                    else:
+                        print ("INVALID!! Enter correct details")
+                        break
 
 
 
             ######## Account Section #######
-                while True:
-                    print(
-                        "Use these short codes: sc - Save exisiting account credentials, ca - Create new account credentials, da - Display existing accounts, dc - Display existing credentials, del - Delete existing accounts")
-                    print("Input shortcode: ")
-                    short_code = input().lower()
+                    while True:
+                        print("Use these short codes:") 
+                        print("""
+                        sc - Save exisiting account credentials
+                        cn - Create new account credentials
+                        da - Display existing accounts, 
+                        dc - Display existing credentials
+                        del  - Delete existing accounts
+                            """)
+                        print('\n')
+                        print("Input shortcode: ")
+                        short_code = input().lower()
 
 
-                    if short_code == "sc":
-                        print("Save an Existing Account")
-                        print("-"*10)
+                        if short_code == "sc":
+                            print("Save an Existing Account")
+                            print("-"*60)
+                            print('\n')
+                            print("Account name.....")
+                            account_name = input()
 
-                        print("Account name.....")
-                        account_name = input()
+                            print('\n')
+                            print("Username...")
+                            user_name = input()
 
-                        print("Account Username...")
-                        user_name = input()
-
-                        print("Account Password")
-                        account_password = input()
-                        save_account(create_account(
-                            account_name, user_name, account_password))
-                        print('/n')
-                        print(
-                            f"Thank you {f_name}, your account credentials for {account_name} have been successfully saved")
-                        print('/n')
-
-
-
-
-                    elif short_code == "ca":
-                        print("Create a new account")
-                        print("-"*10)
-
-                        print("Account name....")
-                        account_name = input()
-
-                        print("Account Username...")
-                        user_name = input()
-
-                        print("Account Password")
-                        account_password = input()
-                        save_account(create_account(
-                            account_name, user_name, account_password))
-                        print('/')
-                        print(
-                            f"{f_name}. {account_name} has been successfully saved")
-
-
-
-
-                    elif short_code == "da":
-                        if display_accounts():
+                            print('\n')
+                            print("Account Password")
+                            account_password = input()
+                            save_account(create_account(
+                                account_name, user_name, account_password))
+                            print('/n')
                             print(
-                                "Here is a list of the existing account credentials")
+                                f"Thank you {f_name}, your account credentials for {account_name} have been successfully saved")
+                            print('/n')
+
+
+
+
+                        elif short_code == "cn":
+                            print('\n')
+                            print("Create a new account")
+                            print("-"*60)
+
+                            print("Account name....")
+                            account_name = input()
                             print('\n')
 
-                            for account in display_accounts():
-                                print(
-                                    f" {account.account} ")
-                        else:
-                            print(" You currently have nothing saved")
+                            print("Username...")
+                            user_name = input()
+                            print('\n')
 
-
-
-                    elif short_code == "dc":
-                        print("Enter the name of the account credentials you would like to see")
-                        account_name = input()
-                        if exisiting_account(account_name):
-                            for account in find_by_account(account_name):
-                                print(f"{account.account}  {account.username}  {account.password}")
-                        else:
-                            print("Sorry you have no credentials by that account name")
-
-
-
-                    elif short_code == "del":
-                        print("Enter the name of the account you wish to delete")
-                        account_name = input()
-                        if exisiting_account(account_name):
-                            delete_account(account_name)
+                            print("Password")
+                            account_password = input()
+                            print('\n')
+                            save_account(create_account(
+                                account_name, user_name, account_password))
+                            print('\n')
                             print(
-                                f"{account_name} has succesfully been deleted.")
-                        else:
-                            print("The account you entered does not exist")
+                                f"{f_name}. {account_name} has been successfully saved")
 
-            
+
+
+
+
+                        elif short_code == "da":
+                            if display_accounts():
+                                print(
+                                    "Here is a list of the existing account credentials")
+                                print('\n')
+
+                                for account in display_accounts():
+                                    print('\n')
+                                    print(
+                                        f" {account.account} ")
+                            else:
+                                print('\n')
+                                print(" You currently have nothing saved")
+                                print('\n')
+
+
+
+                        elif short_code == "dc":
+                            print('\n')
+                            print("Enter the name of the account credentials you would like to see")
+                            account_name = input()
+                            if find_by_account(account_name):
+                                    display_accounts()
+                                    print('\n')
+                                    print(f"{account}  {username}  {password}")
+                                    print('\n')
+                            else:
+                                print('\n')
+                                print("Sorry you have no credentials by that account name")
+                                print('\n')
+
+
+                        elif short_code == "del":
+                            print('\n')
+                            print("Enter the name of the account you wish to delete")
+                            account_name = input()
+                            if exisiting_account(account_name):
+                                delete_account(account_name)
+                                print('\n')
+                                print(
+                                    f"{account_name} has succesfully been deleted.")
+                                print('\n')
+                            else:
+                                print('\n')
+                                print("The account you entered does not exist")
+                                print('\n')
+                
 
 
         elif short_code == "ex":

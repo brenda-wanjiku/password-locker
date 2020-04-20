@@ -1,3 +1,5 @@
+import random
+import string
 class Credentials:
     '''
     Class that generates new instance of the account credentials, with the account details to the application
@@ -33,7 +35,7 @@ class Credentials:
     def account_exist(cls, account):
         for account_details in cls.account_info:
             if account_details.account == account:
-                return  "Account name:" + account_details.account + "\nUsername: " + account_details.username + "\nPassword: " account_details.password
+                return  "Account name:" + account_details.account + "\nUsername: " + account_details.username + "\nPassword: " + account_details.password
         '''
         Method to check if an account exists
         Args:
@@ -43,7 +45,7 @@ class Credentials:
     def find_by_account(cls, account):
         for account_details in cls.account_info:
             if account_details.account == account:
-                return  "Account name:" + account_details.account + "\nUsername: " + account_details.username + "\nPassword: " account_details.password
+                return  "Account name:" + account_details.account + "\nUsername: " + account_details.username + "\nPassword: " + account_details.password
 
         '''
         Method to display an account's credentials on entering account name
@@ -61,6 +63,7 @@ class Credentials:
         Args:
             account_name: Name of the account which you seek display its credentials
         '''
+
 
    
     
