@@ -46,11 +46,20 @@ def find_by_account(account):
     return Credentials.find_by_account(account)
 
 
+def password_generator(password_length):
+    return Credentials.password_generator(password_length)
+    '''
+        Function that finds a contact by number and returns the contact
+    '''
+
+
+
 ############### Main program #####################
 def main():
     print('\n')
     print("WELCOME TO YOUR PASSWORD MANAGER")
     print('\n')
+    print("You HAVE to CREATE an account to use the app")
     while True:
         print("""Use these short codes:
             cn - create a new user 
@@ -89,7 +98,7 @@ def main():
                     save_user(create_user(f_name, l_name, e_address, password))
                     print('\n')
                     print(
-                        f"{f_name}  {l_name} you have successfully signed up for an account")
+                        f"{f_name}  {l_name} you have successfully signed up for an account. Your password is {password}")
                     print('\n')  
                     print("Kindly LOG IN to explore the app :)")
                     print('\n')
@@ -170,14 +179,40 @@ def main():
                             user_name = input()
                             print('\n')
 
-                            print("Password")
-                            account_password = input()
+
+                            print("Would you like us to GENERATE A SECURE PASSWORD for you or would you like to USE ONE OF YOUR OWN?")
                             print('\n')
-                            save_account(create_account(
-                                account_name, user_name, account_password))
-                            print('\n')
-                            print(
-                                f"{f_name}. {account_name} has been successfully saved")
+                            print("Use these short codes:")
+                            print(""" gen - for us to generate one for you
+                                      own - if you wish to input your own  
+                                  """)
+                            choice = input().lower()
+
+                            if choice == 'own':
+                                    print('\n')
+                                    print("Enter desired password for this account...")
+                                    account_password = input()
+                                    save_account(create_account(account_name, user_name, account_password))
+                                    print(f"Your password is {account_password}")
+                                    print ('\n')
+                                    print(f"Ok {f_name}, your account credentials for {account_name} have been successfully been saved")
+                                    print ('\n')
+
+                            elif choice == 'gen':
+                                    print("Enter your desired password length...")
+                                    password_length = int(input())
+                                    account_password =  password_generator(password_length)
+                                    print('\n')
+                                    print(f"Your generated password is: {account_password}")
+                                    print('\n')
+                                    print('\n')
+                                    save_account(create_account(account_name, user_name, account_password))
+                                    print ('\n')
+                                    print(f"Ok {f_name}, your account credentials for {account_name} have been successfully been saved")
+                                    print ('\n')
+
+                            else:
+                                    print("Oops, that short code does not seem to march any of the prescribed shortcodes, please try again")
 
 
 

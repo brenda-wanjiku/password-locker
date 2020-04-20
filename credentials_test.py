@@ -87,5 +87,13 @@ class TestCredentials (unittest.TestCase):
         Test_delete_credentials to test if we can remove a credentials from our credentials list
         '''
 
+     def test_password_update(self):
+        self.new_account.save_account()
+        generated_password = Credentials.password_generator(10)
+        self.assertEqual(len(generated_password), 10)
+        '''
+        Test to determine if password generator can generate random passwords
+        '''
+
 if __name__ == '__main__':
     unittest.main()

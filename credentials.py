@@ -63,7 +63,14 @@ class Credentials:
         Args:
             account_name: Name of the account which you seek display its credentials
         '''
-
-
+    @classmethod
+    def password_generator(cls,password_length = 8):
+        password_chars = string.ascii_letters + string.digits + string.punctuation
+        return ''.join(random.choice(password_chars) for i in range (password_length))
+        '''
+        Method for generating random passwords with lower-case, upper-case, digits and special characters
+        Args:
+            password_length: The number of characters in the password to be generated
+        '''
    
     
