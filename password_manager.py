@@ -163,6 +163,7 @@ def main():
                         da - Display existing accounts, 
                         dc - Display existing credentials
                         del  - Delete existing accounts
+                        ex - Exit application
                             """)
                         print('\n')
                         print("Input shortcode: ")
@@ -210,8 +211,7 @@ def main():
                             print("Would you like us to GENERATE A SECURE PASSWORD for you or would you like to USE ONE OF YOUR OWN?")
                             print('\n')
                             print("Use these short codes:")
-                            print(""" gen - for us to generate one for you
-                                      own - if you wish to input your own  
+                            print(""" gen - for us to generate one for you ,  own - if you wish to input your own  
                                   """)
                             choice = input().lower()
 
@@ -248,7 +248,7 @@ def main():
                         elif short_code == "da":
                             if display_accounts():
                                 print(
-                                    "Here is a list of the existing account credentials")
+                                    "Here is a list of the existing accounts")
                                 print('\n')
 
                                 for account in display_accounts():
@@ -263,18 +263,20 @@ def main():
 
 
                         elif short_code == "dc":
-                            print('\n')
-                            print("Enter the name of the account credentials you would like to see")
-                            account_name = input()
-                            if find_by_account(account_name):
-                                    display_accounts()
+                            if display_accounts():
+                                print(
+                                    "Here is a list of the existing accounts")
+                                print('\n')
+
+                                for account in display_accounts():
                                     print('\n')
-                                    print(f"{account}  {username}  {password}")
-                                    print('\n')
+                                    print(
+                                        f" {account.account} {account.username} {account.password} ")
+                                     print('\n')
                             else:
-                                print('\n')
-                                print("Sorry you have no credentials by that account name")
-                                print('\n')
+                                    print('\n')
+                                    print("Sorry you have no credentials by that account name")
+                                    print('\n')
 
 
                         elif short_code == "del":
@@ -291,7 +293,15 @@ def main():
                                 print('\n')
                                 print("The account you entered does not exist")
                                 print('\n')
-                
+                        
+                        elif short_code == "ex":
+                            print('\n')
+                            print("Thank you for stopping by. Have a good day")
+                            break
+                        
+                        else: 
+                            print('\n')
+                            print("I didn't get that. Please use correct short codes")
 
 
         elif short_code == "ex":
